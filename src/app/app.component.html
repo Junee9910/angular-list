@@ -1,6 +1,6 @@
 <div class="container">
   <h1>{{title}}</h1>
-  <app-header [list]="list"></app-header>
+  <app-header [todos]="todos" (onAddTodo)="addTodo($event)"></app-header>
   <div>
     <ul>
       <li *ngFor="let item of filterList" 
@@ -15,13 +15,7 @@
   <div>All {{count}}</div>
   <div>Active {{activeCount}}</div>
   <div>Completed {{completedCount}}</div>
-  <div class="filter">
-    Filter:
-    <span [class.active]="status==='All'" (click)="setStatus('All')">All </span>
-    <span [class.active]="status==='Active'" (click)="setStatus('Active')">Active</span>
-    <span [class.active]="status==='Completed'" (click)="setStatus('Completed')">Complete</span>
-  </div>
-  
+  <app-filter (onChangeStatus)="setStatus($event)"></app-filter>
   <div *ngIf="editItem">
     <input type="text"[(ngModel)]="editItem.title"/>
     <input type="checkbox" [(ngModel)]="editItem.isCompleted"/>

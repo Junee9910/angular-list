@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
+import { Status } from 'src/app/type';
 
 @Component({
   selector: 'app-root',
@@ -10,39 +11,43 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
   }
   title = 'angular-list';
-  status:'All'|'Active'|'Completed'='All';
+  status:Status='All';
   editItem?:any=null;
 
-  list=[
+  todos=[
     {id:uuidv4(),title:"One",isCompleted:true},
     {id:uuidv4(),title:"Two",isCompleted:true},
     {id:uuidv4(),title:"Three",isCompleted:false}
   ];
 
+  addTodo(text:string){
+    this.todos.push({id:uuidv4(),title:text,isCompleted:false});
+  }
+  setStatus(status:Status){
+    this.status=status;
+  }
   toggle(item:any){
     item.isCompleted=!item.isCompleted;
   }
   get count(){
-    return this.list.length;
+    return this.todos.length;
   }
 
   get activeCount(){
-    return this.list.filter(x=>!x.isCompleted).length;
+    return this.todos.filter(x=>!x.isCompleted).length;
   }
   get completedCount(){
-    return this.list.filter(x=>x.isCompleted).length;
+    return this.todos.filter(x=>x.isCompleted).length;
   }
-  setStatus(status:'All'|'Active'|'Completed'){
-    this.status=status;
-  }
+
   get filterList(){
     switch(this.status){
       case 'Active':
-        return this.list.filter(x=>!x.isCompleted);
+        return this.todos.filter(x=>!x.isCompleted);
         case 'Completed':
-          return this.list.filter(x=>x.isCompleted);
+          return this.todos.filter(x=>x.isCompleted);
           default:
-            return this.list;
+            return this.todos;
     }
   }
 
@@ -50,7 +55,7 @@ export class AppComponent implements OnInit{
 this.editItem={...item};
  }
  save(){
-   let oldItem:any=this.list.find((x)=>x.id===this.editItem.id);
+   let oldItem:any=this.todos.find((x)=>x.id===this.editItem.id);
   
   oldItem.title=this.editItem.title;
   oldItem.isCompleted=this.editItem.isCompleted;
@@ -58,7 +63,7 @@ this.editItem={...item};
   this.editItem=null;
  }
  dele(item:any){
-this.list=this.list.filter(x=>x.id!==item.id);
+this.todos=this.todos.filter(x=>x.id!==item.id);
  }
  cancel(){
    this.editItem=null;

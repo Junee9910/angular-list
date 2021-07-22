@@ -1,0 +1,6 @@
+.filter span{
+    margin-right: 10px;
+}
+.filter span.active{
+    font-weight: bold;
+}

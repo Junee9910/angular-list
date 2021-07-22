@@ -1,0 +1,6 @@
+<div class="filter">
+    Filter:
+    <span [class.active]="status==='All'" (click)="setStatus('All')">All </span>
+    <span [class.active]="status==='Active'" (click)="setStatus('Active')">Active</span>
+    <span [class.active]="status==='Completed'" (click)="setStatus('Completed')">Complete</span>
+  </div>

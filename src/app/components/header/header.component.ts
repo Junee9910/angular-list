@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -9,7 +9,8 @@ import { v4 as uuidv4 } from 'uuid';
 export class HeaderComponent implements OnInit {
 
   text='';
-  @Input() list:any[]=[];
+  @Input() todos:any[]=[];
+  @Output() onAddTodo=new EventEmitter();
 
   constructor() { }
 
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
     {
       alert("Please write a todo");
     }
-    this.list.push({id:uuidv4(),title:this.text,isCompleted:false});
+    this.onAddTodo.emit(this.text);
     this.text=''; 
  }
 
