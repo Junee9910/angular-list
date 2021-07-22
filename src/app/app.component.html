@@ -1,6 +1,6 @@
 <div class="container">
   <h1>{{title}}</h1>
-  <app-header [todos]="todos" (onAddTodo)="addTodo($event)"></app-header>
+  <app-header (onAddTodo)="addTodo($event)"></app-header>
   <div>
     <ul>
       <li *ngFor="let item of filterList" 
