@@ -12,12 +12,10 @@ export class AppComponent implements OnInit{
   
   title = 'angular-list';
   status:Status='All';
-  editItem?:any=null;
+  
   todos:any[]=[];
 
- constructor(private todoService:TodoService){
-   
- }
+ constructor(private todoService:TodoService){}
   
  ngOnInit(): void {
    this.todoService.getTodo().subscribe(x=>this.todos=x);
@@ -28,37 +26,5 @@ export class AppComponent implements OnInit{
   }
   setStatus(status:Status){
     this.status=status;
-  }
-  toggle(item:any){
-    item.isCompleted=!item.isCompleted;
-  }
-
-  get filterList(){
-    switch(this.status){
-      case 'Active':
-        return this.todos.filter(x=>!x.isCompleted);
-        case 'Completed':
-          return this.todos.filter(x=>x.isCompleted);
-          default:
-            return this.todos;
-    }
-  }
-
- edit(item:any){
-this.editItem={...item};
- }
- save(){
-   let oldItem:any=this.todos.find((x)=>x.id===this.editItem.id);
-  
-  oldItem.title=this.editItem.title;
-  oldItem.isCompleted=this.editItem.isCompleted;
-
-  this.editItem=null;
- }
- dele(item:any){
-this.todos=this.todos.filter(x=>x.id!==item.id);
- }
- cancel(){
-   this.editItem=null;
- }
+  }  
 }

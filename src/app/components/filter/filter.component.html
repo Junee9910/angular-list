@@ -1,6 +1,25 @@
-<div class="filter">
-    Filter:
-    <span [class.active]="status==='All'" (click)="setStatus('All')">All </span>
-    <span [class.active]="status==='Active'" (click)="setStatus('Active')">Active</span>
-    <span [class.active]="status==='Completed'" (click)="setStatus('Completed')">Complete</span>
+<div>
+  <div>
+    <ul>
+      <li *ngFor="let item of filterList"      
+      [class.completed]="item.isCompleted">
+      <span (click)="toggle(item)" > {{item.title}}</span> 
+      <button (click)="edit(item)">Edit</button>
+      <button (click)="dele(item)">Delete</button>
+    </li>
+    </ul>
   </div>
+  <div class="filter">
+      Filter:
+      <span [class.active]="status==='All'" (click)="setStatus('All')">All </span>
+      <span [class.active]="status==='Active'" (click)="setStatus('Active')">Active</span>
+      <span [class.active]="status==='Completed'" (click)="setStatus('Completed')">Complete</span>
+    </div>
+    <div *ngIf="editItem">
+      <input type="text"[(ngModel)]="editItem.title"/>
+      <input type="checkbox" [(ngModel)]="editItem.isCompleted"/>
+      <button (click)="save()">Save</button>
+      <button (click)="cancel()">Cancel</button>
+    </div>
+</div>
+
