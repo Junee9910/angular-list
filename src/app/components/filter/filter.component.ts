@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Status } from 'src/app/type';
+import { TodoService } from 'src/app/todo.service';
+import todos from '../../data';
 
 @Component({
   selector: 'app-filter',
@@ -10,6 +12,7 @@ export class FilterComponent implements OnInit {
 
   @Output() onChangeStatus=new EventEmitter();
   status:Status='All';
+  todos=todos;
 
   constructor() { }
 
@@ -20,5 +23,4 @@ export class FilterComponent implements OnInit {
     this.status=status;
     this.onChangeStatus.emit(status);
   }
-
 }

@@ -32,16 +32,6 @@ export class AppComponent implements OnInit{
   toggle(item:any){
     item.isCompleted=!item.isCompleted;
   }
-  get count(){
-    return this.todos.length;
-  }
-
-  get activeCount(){
-    return this.todos.filter(x=>!x.isCompleted).length;
-  }
-  get completedCount(){
-    return this.todos.filter(x=>x.isCompleted).length;
-  }
 
   get filterList(){
     switch(this.status){

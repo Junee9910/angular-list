@@ -3,8 +3,7 @@
   <app-header (onAddTodo)="addTodo($event)"></app-header>
   <div>
     <ul>
-      <li *ngFor="let item of filterList" 
-      
+      <li *ngFor="let item of filterList"      
       [class.completed]="item.isCompleted">
       <span (click)="toggle(item)" > {{item.title}}</span> 
       <button (click)="edit(item)">Edit</button>
@@ -12,9 +11,7 @@
     </li>
     </ul>
   </div>
-  <div>All {{count}}</div>
-  <div>Active {{activeCount}}</div>
-  <div>Completed {{completedCount}}</div>
+<app-count></app-count>
   <app-filter (onChangeStatus)="setStatus($event)"></app-filter>
   <div *ngIf="editItem">
     <input type="text"[(ngModel)]="editItem.title"/>
