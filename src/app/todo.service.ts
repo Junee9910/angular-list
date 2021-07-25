@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import todos from './data';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { Todos } from './todos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  todos=todos;
 
-  constructor() { }
+  private apiUrl='http://localhost:5000/todos'
 
-  getTodo(){
-    return of(todos);
+  constructor( private http:HttpClient) { }
+
+  getTodo():Observable<Todos[]>{
+    return this.http.get<Todos[]>(this.apiUrl);
   }
   
 }

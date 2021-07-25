@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from 'src/app/todo.service';
-import todos from '../../data';
+import todos from '../../mock-todos';
 
 @Component({
   selector: 'app-count',
@@ -9,6 +9,7 @@ import todos from '../../data';
 })
 export class CountComponent implements OnInit {
   todos=todos;
+  // @Input()
 
   constructor() { }
 
@@ -19,9 +20,9 @@ export class CountComponent implements OnInit {
   }
 
   get activeCount(){
-    return this.todos.filter(x=>!x.isCompleted).length;
+    return this.todos.filter(x=>!x.completed).length;
   }
   get completedCount(){
-    return this.todos.filter(x=>x.isCompleted).length;
+    return this.todos.filter(x=>x.completed).length;
   }
 }
