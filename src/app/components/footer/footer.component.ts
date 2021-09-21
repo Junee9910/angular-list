@@ -1,15 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TodoService } from 'src/app/todo.service';
-import todos from '../../mock-todos';
+import todos from 'src/app/data/mock-todos';
 
 @Component({
-  selector: 'app-count',
-  templateUrl: './count.component.html',
-  styleUrls: ['./count.component.css']
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
 })
-export class CountComponent implements OnInit {
-  todos=todos;
-  // @Input()
+export class FooterComponent implements OnInit {
+
+  @Input() todos=todos;
 
   constructor() { }
 
@@ -18,7 +17,7 @@ export class CountComponent implements OnInit {
   get count(){
     return this.todos.length;
   }
-
+  
   get activeCount(){
     return this.todos.filter(x=>!x.completed).length;
   }

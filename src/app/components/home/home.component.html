@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    <app-header (onAddTodo)="addTodo($event)"></app-header>
+  
+    <ul>
+      <li *ngFor="let item of filteredTodos" [class.completed]="item.completed">
+  
+        <span (click)="toggle(item)"> {{ item.title }}</span>
+        <button (click)="del(item)">Delete</button>
+        <button (click)="edit(item)" [routerLink]="['/edit']" routerLinkActive="router-link-active">Edit</button>
+      </li>
+    </ul>
+    <app-footer></app-footer>
+    <!-- <div>All {{count}}</div>
+    <div>Active {{activeCount}}</div>
+    <div>Completed {{completedCount}}</div> -->
+    <app-filter (onChangeStatus)="setStatus($event)"></app-filter>
+  
+    <!-- <div *ngIf="editItem">
+      <input type="text" [(ngModel)]="editItem.title" />
+      <input type="checkbox" [(ngModel)]="editItem.completed" />
+      <button (click)="save()">Save</button>
+      <button (click)="cancel()">Cancel</button>
+    </div> -->
+    <!-- <app-edit (onSaveTodo)="saveTodo($event)" (onCancelTodo)="cancelTodo($event)"></app-edit> -->
+  </div>
+  

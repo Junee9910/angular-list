@@ -1,24 +1,2 @@
-<div class="container">
-  <h1>{{title}}</h1>
-  <app-header (onAddTodo)="addTodo($event)"></app-header>
-
-  <ul>
-    <li *ngFor="let item of filteredTodos" [class.completed]="item.completed">
-
-      <span (click)="toggle(item)"> {{ item.title }}</span>
-      <button (click)="del(item)">Delete</button>
-      <button (click)="edit(item)">Edit</button>
-    </li>
-  </ul>
-<app-count></app-count>
-  <app-filter (onChangeStatus)="setStatus($event)"></app-filter>
-
-  <div *ngIf="editItem">
-    <input type="text" [(ngModel)]="editItem.title" />
-    <input type="checkbox" [(ngModel)]="editItem.completed" />
-    <button (click)="save()">Save</button>
-    <button (click)="cancel()">Cancel</button>
-  </div>
-</div>
 
 <router-outlet></router-outlet>

@@ -1,5 +1,5 @@
 export interface Todos {
-  id:number|string;
+  id?:number;
   title: string;
   completed: boolean;
 }

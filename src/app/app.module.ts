@@ -6,15 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { CountComponent } from './components/count/count.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditComponent } from './components/edit/edit.component';
+import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FilterComponent,
-    CountComponent,
+    EditComponent,
+    HomeComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,19 @@
 {
-  "tasks":[
+  "todos":[
     {
         "id":"1",
         "title":"One",
-        "isCompleted":true
+        "completed":true
     },
     {
         "id":"2",
         "title":"Two",
-        "isCompleted":true
+        "completed":false
     },
     {
         "id":"3",
         "title":"Three",
-        "isCompleted":false
+        "completed":true
     }
 ]
 }

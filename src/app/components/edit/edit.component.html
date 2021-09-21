@@ -1,0 +1,12 @@
+<!-- <div *ngIf="editItem">
+    <input type="text" [(ngModel)]="editItem.title" />
+    <input type="checkbox" [(ngModel)]="editItem.completed" />
+    <button (click)="save()">Save</button>
+    <button (click)="cancel()">Cancel</button>
+</div> -->
+<div>
+  <input type="text">
+  <input type="checkbox">
+  <button>Save</button>
+  <button [routerLink]="['/']" routerLinkActive="router-link-active">Cancel</button>
+</div>
